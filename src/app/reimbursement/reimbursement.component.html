@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 border p-3 d-flex justify-content-center">
+        <form class="reimbForm" #reimbForm="ngForm" (ngSubmit)="getDetails(reimbForm.value)">
+            <table>
+                <th colspan="2" style="text-align: center;">
+                    <h3>Reimburse Your Bills.</h3>
+                </th>
+
+                <tr>
+                    <td>Full Name</td>
+                    <td>
+                        <input type="text" name="fullname" ngModel required />
+                        <div *ngIf="reimbForm.controls['fullname'].invalid && reimbForm.controls['fullname'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid Name</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Bill Number</td>
+                    <td>
+                        <input type="text" name="billNo" ngModel required />
+                        <div *ngIf="reimbForm.controls['billNo'].invalid && reimbForm.controls['billNo'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid Bill Number</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter GST Number of bill</td>
+                    <td>
+                        <input type="text" name="gst" ngModel required maxlength="15"/>
+                        <div *ngIf="reimbForm.controls['gst'].invalid && reimbForm.controls['gst'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid GST Number</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Bill Amount</td>
+                    <td>
+                        <input type="number" name="amount" required ngModel />
+                        <div *ngIf="reimbForm.controls['amount'].invalid && reimbForm.controls['amount'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter amount</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr style="text-align: center;">
+                    <td colspan="2">
+                        <button class="btn btn-primary">Submit Bill</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+      </div>
+      <div class="col-md-6 border p-3 d-flex justify-content-center" *ngIf="!imageUploaded">
+        <input type="file" (change)="onSelectFile($event)" accept="image/*">
+      </div>
+      <div class="col-md-6 border p-3 d-flex justify-content-center" *ngIf="imageUploaded">
+        <img [src]="billsDetails.file.url" alt="Image Preview" width="200">
+      </div>
+  </div>
+
+
+
+

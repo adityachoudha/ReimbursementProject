@@ -1,0 +1,79 @@
+#background-image{
+  background-image: url(../../assets/dollar.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 86.5vh;
+}
+
+
+
+
+
+/* .login-container{
+    background-image: url(../../assets/dollar.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 86.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .img{
+    background-color:aliceblue;
+    display: flex;
+    height: 60vh;
+    width: 50vw;
+    align-items: center;
+  }
+  
+  .loginImg{
+    height: 60vh;
+    width: 50vw;
+    background-image: url(../../assets/2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .login-form{
+    height: 60vh;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin: 10px 0 10px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-primary {
+    width: 50%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .danger {
+    color: red;
+  }
+  
+   */

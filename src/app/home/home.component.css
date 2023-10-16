@@ -1,0 +1,68 @@
+.container{
+    padding: 30px;
+}
+ 
+ .head{
+    display: flex;
+    height: 50vh;
+    margin-bottom: 20px;
+}
+
+.Img{
+    background-image: url(../../assets/pic1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+    width: 70%;
+}
+
+.main{
+    padding: 20px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.sec{
+    /* background-color: blue; */
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.sec-reimb{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reimburseImg{
+    background-image: url(../../assets/pic3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+    width: 50%;
+}
+
+.taxImg{
+    background-image: url(../../assets/pic2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+    width: 50%;
+}
+
+.sec-taxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

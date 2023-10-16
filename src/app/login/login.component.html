@@ -1,0 +1,125 @@
+<div id="background-image">
+  <div class="container d-flex justify-content-center align-items-center vh-95">
+
+      <div class="row mx-auto box"
+          style="max-width: 80%; border: 1px solid rgb(215, 210, 210); border-radius: 10px; backdrop-filter: blur(2px); background-color: rgba(255, 255, 255, 0.3);">
+          <div class="col-md-6 d-none d-md-block">
+              <br>
+              <img src="assets/2.jpg" class="img-fluid" alt="LoginFormBG" style="padding-left: 15px;">
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+              <div class="d-flex flex-column justify-content-center"
+                  style="width: 430px; padding-left: 10px; padding-right: 10px;">
+                  <h1 style="font-family: 'Varela Round', sans-serif; font-weight: bold; padding-top: 20px;">Reimbursement</h1>
+                  <p>Welcome back!</p>
+                  <div *ngIf="currentStep === 'email'">
+                      <form #emailForm="ngForm" (ngSubmit)="verifyEmail(emailForm.value)" novalidate>
+                          <div *ngIf="!continuePassword" class="input-group">
+                              <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                              <input class="form-control rounded-end" type="text" placeholder="Enter Email ID"
+                                  required name="emailId" ngModel>
+                              <button [disabled]="!emailForm.valid" *ngIf="!continuePassword"
+                                  class="btn btn-success rounded-start" style="margin-left: 10px;">Get OTP</button>
+                          </div>
+                      </form>
+                  </div>
+
+                  <!-- For otp Step -->
+                  <div *ngIf="currentStep === 'otp'">
+                      <form #otpForm="ngForm" (ngSubmit)="verifyOtp(otpForm.value)" novalidate>
+                          <div class="input-group">
+                              <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                              <input class="form-control rounded-end" type="number" placeholder="Enter OTP" required
+                                  name="otp" ngModel #otp="ngModel">
+                              <button [disabled]="!otpForm.valid" class="btn btn-success rounded-start" style="margin-left: 10px;">SignIn</button>
+                          </div>
+                      </form>
+                  </div>
+
+                  <div style="display: flex; justify-content: center;">
+                  <button *ngIf="!continuePassword" class="btn btn-primary" style="margin-top: 10px;"(click)="displayPassword()">Continue with Password</button></div>
+
+                  <form #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm.value)" novalidate>
+
+                      <div *ngIf="continuePassword">
+
+
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                              <input class="form-control rounded-end" type="text" placeholder="Enter Email ID"
+                                  required name="emailId" ngModel>
+                            </div>
+
+                          <div class="input-group" style="margin-top: 10px;">
+                              <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                              <input class="form-control rounded-end" type="password" placeholder="Enter Password"
+                                  required name="password" ngModel #password="ngModel">
+                              <button class="btn btn-success rounded-start"
+                                  style="margin-left: 10px; width: 95px;">Login</button>
+                          </div>
+
+                          <div class="input-group">
+                            <button class="btn btn-primary m-3" (click)="changeToOtp()">Login with Otp</button>
+                          </div>
+                      </div>
+
+                  </form>
+
+                  <!-- <p *ngIf="continuePassword"
+                      style="color: red; font-size: small; margin-top: 2px; margin-bottom: -5px; cursor: pointer;"
+                      (click)="forgotPassword()">Forgot Password?</p> -->
+
+                  <!-- <div align="center" style="margin-top: 10px;">
+                      <button class="btn d-flex align-items-center justify-content-center"
+                          style="align-self: flex-start; height: 35px; background-color: white; color: black; border: 1px solid rgb(215, 210, 210); font-family: 'PT Sans'; font-weight: bold;">
+                          <img src="../../assets/pic1.jpg" alt="Google Icon"style="height: 19px; margin-right: 10px;">
+                          Sign In with Google
+                      </button>
+                  </div> -->
+                  <div align="center" style="margin-top: 10px; padding-bottom: 20px;">
+                      <p style="font-family: 'Varela Round', sans-serif;">New User ? <span
+                              style="font-family: 'Varela Round', sans-serif; color: red; font-weight: bold; cursor: pointer;"
+                              (click)="signUp()">Sign
+                              Up</span></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="login-container">
+    <div class="img">
+      <div class="loginImg"></div>
+      <form class="login-form" #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm.value)" novalidate>
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="username">Username </label>
+          <input type="text" class="form-control" name="emailId"  #emailId="ngModel"  ngModel required minlength="2" maxlength="30" >
+          <div *ngIf="emailId.errors?.['required'] && emailId.touched" class="danger" style="width: fit-content;">Please Enter Email </div>
+          <div *ngIf="emailId.errors?.['minlength'] && emailId.touched" class="danger" style="width: fit-content;"> Please Enter Atleast 2 Characters for EmailId</div> 
+        </div>
+        <div class="form-group">
+          <label for="password">Password  </label>
+          <input type="password" class="form-control"name="password" #password="ngModel" ngModel required minlength="2" maxlength="30">
+          <div *ngIf="password.errors?.['required'] && password.touched" class="danger" style="width: fit-content;"> Please Enter Password </div>
+          <div *ngIf="password.errors?.['minlength'] && password.touched" class="danger" style="width: fit-content;"> Please Enter Atleast Characters for Password</div> <br/>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>          
+        <p routerLink="forgot-password" style="color: blue;cursor: pointer;"><u>Forget Password ?</u></p>
+      </form>
+ </div>
+ 
+</div> -->

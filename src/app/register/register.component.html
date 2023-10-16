@@ -1,0 +1,113 @@
+<div class="cont">
+    
+    <form class="registerForm" #regForm="ngForm" (ngSubmit)="employeeRegister(regForm.value)">
+        <p class="title">Register </p>
+        <table align="center">
+            <tbody>           
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="empName" ngModel required pattern="[a-zA-Z\s]+"/>
+                        <div *ngIf="regForm.controls['empName'].invalid && regForm.controls['empName'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid First Name</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td><input type="number" name="salary" ngModel /></td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>
+                      <input type="number" name="mobile" ngModel required pattern="[6-9][0-9]{9}"/>
+                      <div *ngIf="regForm.controls['mobile'].invalid && regForm.controls['mobile'].touched">
+                        <p class="error" style="color: red; font-size: 12px;">Invalid Number</p>
+                      </div>
+                    </td>
+                </tr>                  
+                  
+                <tr>
+                    <td>Gender</td>
+                    <td><select name="gender" ngModel required>
+                            <option value="" selected> Select Gender </option>
+                            <option value="male"> Male </option>
+                            <option value="female"> Female </option>
+                            <option value="others"> Others </option>
+                        </select>
+                        <div *ngIf="regForm.controls['gender'].invalid && regForm.controls['gender'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid gender</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Date of Join</td>
+                    <td>
+                        <input type="date" name="doj" ngModel required/>
+                        <div *ngIf="regForm.controls['doj'].invalid && regForm.controls['doj'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid date of joining</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <select name="country" ngModel required>
+                            <option value="" selected> Select Country </option>
+                            <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
+                        </select>
+                        <div *ngIf="regForm.controls['country'].invalid && regForm.controls['country'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Select valid country</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>EmailId</td>
+                    <td>
+                        <input type="text" name="emailId" ngModel required pattern="[a-zA-Z0-9.]+@[a-zA-Z]+\.[a-zA-Z]{2,}$"/>
+                        <div *ngIf="regForm.controls['emailId'].invalid && regForm.controls['emailId'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Enter valid Email Id</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" name="password" ngModel required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*]).{3,8}$"/>
+                        <div *ngIf="regForm.controls['password'].invalid && regForm.controls['password'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">
+                                Password must
+                                contain less than 8 characters<br>
+                                • one upper case letter <br>
+                                • one digit <br>
+                                • one symbol (~!@#$%^&*)
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Department</td>
+                    <td>
+                        <select name="deptId" ngModel required>
+                            <option value="" selected> Select Department </option>
+                            <option value="{{department.deptId}}" *ngFor="let department of departmentList"> {{department.deptName}} </option>
+                        </select>
+                        <div *ngIf="regForm.controls['deptId'].invalid && regForm.controls['deptId'].touched">
+                            <p class="errors" style="color: red; font-size: 12px;">Select valid Department Name</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit" [disabled]="regForm.invalid" class="submit">Register</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    
+    </div>

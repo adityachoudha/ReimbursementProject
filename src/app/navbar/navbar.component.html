@@ -1,0 +1,20 @@
+<div class="navbar">
+    
+    <div class="partOne">
+        <ul>
+            <li routerLink="home"><img src="../../assets/refund.png" alt="home"></li>
+            <li routerLink="taxes">Taxes</li>
+            <li routerLink="reimbursement">Reimbursement</li>
+        </ul>
+    </div>
+    <div class="partTwo d-flex ">
+        <ul *ngIf="!userLogingStutas()">
+            <li routerLink="login">Login</li>
+            <li routerLink="register">Register</li>
+        </ul>
+
+        <ul *ngIf="userLogingStutas()">
+            <li routerLink="logout">Logout</li>
+        </ul>
+    </div>
+</div>
